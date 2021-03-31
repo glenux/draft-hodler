@@ -1,0 +1,31 @@
+---
+name: hodler
+version: 0.1.0
+
+authors:
+  - Glenn Y. Rolland <glenux@glenux.net>
+
+description: |
+  Crypto-currencies porfolio monitoring tool
+
+targets:
+  hodler:
+    main: src/main.cr
+
+dependencies:
+  xdg_basedir:
+    github: shmibs/xdg_basedir
+  completion:
+    github: matiasgarciaisaia/completion
+    branch: crystal-0.18
+    # github: f/completion
+
+#  pg:
+#    github: will/crystal-pg
+#    version: "~> 0.5"
+
+# development_dependencies:
+#   webmock:
+#     github: manastech/webmock.cr
+
+license: LGPL-3

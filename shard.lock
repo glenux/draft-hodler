@@ -1,0 +1,10 @@
+version: 2.0
+shards:
+  completion:
+    git: https://github.com/matiasgarciaisaia/completion.git
+    version: 0.1.0+git.commit.780bab511917b61e7d814801fd9acd4390eda44a
+
+  xdg_basedir:
+    git: https://github.com/shmibs/xdg_basedir.git
+    version: 1.0.2
+
