@@ -1,8 +1,8 @@
 
 # Hodler
 
+<!-- ![Build](https://github.com/glenux/hodler/workflows/build/badge.svg?branch=master) -->
 
-![Build](https://github.com/glenux/hodler/workflows/build/badge.svg?branch=master)
 [![GitHub license](https://img.shields.io/github/license/glenux/hodler.svg)](https://github.com/glenux/hodler/blob/master/LICENSE.txt)
 [![Donate on patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://patreon.com/glenux)
 
@@ -58,6 +58,8 @@ Got questions? Need help? Tweet at [@glenux](https://twitter.com/glenux)
 [![BTC Tip Jar](https://img.shields.io/badge/BTC-tip-yellow.svg?logo=bitcoin&style=flat)]() `xxx`
 
 [![ETH Tip Jar](https://img.shields.io/badge/ETH-tip-blue.svg?logo=ethereum&style=flat)]() `xxx`
+
+[![Donate on patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://patreon.com/glenux)
 
 Thank you for tips! :pray:
 
