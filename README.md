@@ -1,7 +1,12 @@
 
 # Hodler
 
-holder is a lightweight interactive terminal based UI application for monitoring your cryptocurrency portfolio in real-time.
+
+![Build](https://github.com/glenux/hodler/workflows/build/badge.svg?branch=master)
+[![GitHub license](https://img.shields.io/github/license/glenux/hodler.svg)](https://github.com/glenux/hodler/blob/master/LICENSE.txt)
+[![Donate on patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://patreon.com/glenux)
+
+Holder is a lightweight interactive terminal based UI application for monitoring your cryptocurrency portfolio in real-time.
 
 ## Features / Roadmap
 
@@ -13,6 +18,31 @@ holder is a lightweight interactive terminal based UI application for monitoring
 * :x: Wallet import (CEX plugins)
 * :x: Trade history import (CEX plugins)
 * :x: Real time update
+
+## Installation
+
+:wip: FIXME
+
+## Usage
+
+:wip: FIXME
+
+
+## Contributing
+
+1. Fork it ( http://github.com/glenux/hodler/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+
+## Credits
+
+* [Glenn Y. ROLLAND](https://github.com/glenux) - author & maintainer:
+* You? Fork the project and become a contributor!
+
+Got questions? Need help? Tweet at [@glenux](https://twitter.com/glenux)
 
 ## Inspirations
 
