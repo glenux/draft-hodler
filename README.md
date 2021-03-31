@@ -8,6 +8,8 @@
 
 Holder is a lightweight interactive terminal based UI application for monitoring your cryptocurrency portfolio in real-time.
 
+**For now It is a toy project. It is very early stage and is not supposed to work (yet). Please don't use it in production.** :warning:
+
 ## Features / Roadmap
 
 * :x: Multiple wallets description
