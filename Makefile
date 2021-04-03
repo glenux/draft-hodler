@@ -9,3 +9,5 @@ bin/hodler: $(wildcard src/*.cr)
 completion: bin/hodler
 	$< --completion --development
 
+clean:
+	rm bin/hodler
