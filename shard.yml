@@ -13,12 +13,20 @@ targets:
     main: src/main.cr
 
 dependencies:
+  # Handle XDG environment variables
   xdg_basedir:
     github: shmibs/xdg_basedir
+
+  # Command completion for bash
+  # (use pull request which fixes compatibility)
   completion:
     github: matiasgarciaisaia/completion
     branch: crystal-0.18
     # github: f/completion
+
+  # Text tables
+  tablo:
+    github: hutou/tablo
 
 #  pg:
 #    github: will/crystal-pg
