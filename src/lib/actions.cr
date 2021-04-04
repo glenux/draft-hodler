@@ -1,4 +1,6 @@
 
+require "tablo"
+
 module Hodler
   class Action
     enum Type
@@ -11,7 +13,8 @@ module Hodler
       return false
     end
 
-    def initialize(config : ConfigModel)
+    def initialize(global_options : GlobalOptions, config : ConfigModel)
+      @global_options = global_options
       @config = config
     end
 
@@ -29,26 +32,16 @@ module Hodler
         wallets[from_id] -= tr.from.amount
         wallets[fee_id] -= tr.fee.amount
         wallets[to_id] += tr.to.amount
-
-        pp tr
-        pp wallets
       end
-
     end
   end
 
   class ActionFactory
     def self.build(options, config)
-      action_class = Action
-      [ReportAction, WebUiAction, TextUiAction].each do |cls|
-        action_class = cls if cls.match(options[:action])
-      end
-      action = action_class.new(config)
+      action = options[:action].new(options, config)
     end
   end
 end
 
-require "./actions/report"
-require "./actions/tui"
-require "./actions/web"
+require "./actions/*"
 

@@ -1,27 +1,30 @@
 
-require "./models"
-require "./actions"
-require "./models"
+require "option_parser"
+require "yaml"
+require "colorize"
+require "xdg_basedir"
+require "completion"
+
+require "../lib/version"
+require "../lib/types"
+require "../lib/models"
+require "../lib/actions"
+require "../lib/models"
 
 module Hodler
-  class Cli
-    alias Options = {
-      action: Action::Type,
-      verbose_enable: Bool,
-      config_file: String
-    }
+  class CtlCli
 
     property config : ConfigModel?
-    property options : Options?
+    property options : GlobalOptions?
 
     def initialize
       @config = nil
       @options = nil
     end
 
-    def self.parse_options(args) : Options
+    def self.parse_options(args) : GlobalOptions
       # default values
-      action = Action::Type::Report
+      action = ReportAction
       config_file = XDGBasedir.full_path("hodler/wallet.yml", :config, :read).as(String)
       verbose_enable = true
 
@@ -58,20 +61,32 @@ module Hodler
         parser.separator
         parser.separator "Commands"
 
-        parser.on("report", "Compute report") do
-          parser.banner = "Usage: #{Version::PROGRAM} list [arguments]"
-          action = Action::Type::Report
+        parser.on("get", "Get given object") do
+          parser.banner = "Usage: #{Version::PROGRAM} get [arguments]"
+
+          parser.separator
+          parser.separator "Commands"
+
+          parser.on("portfolio", "Show current portfolio") do
+            parser.banner = "Usage: #{Version::PROGRAM} portfolio [arguments]"
+            action = GetPortfolioAction
+          end
+
+          parser.on("wallet", "Show given wallet") do
+            parser.banner = "Usage: #{Version::PROGRAM} portfolio [arguments]"
+            action = GetWalletAction
+          end
         end
 
-        parser.on("tui", "Run ncurses interactive UI") do
-          parser.banner = "Usage: #{Version::PROGRAM} tui [arguments]"
-          action = Action::Type::TextUi
-        end
+        # parser.on("tui", "Run ncurses interactive UI") do
+        #   parser.banner = "Usage: #{Version::PROGRAM} tui [arguments]"
+        #   action = TextUiAction
+        # end
 
-        parser.on("web", "Run web interactive UI") do
-          parser.banner = "Usage: #{Version::PROGRAM} web [arguments]"
-          action = Action::Type::WebUi
-        end
+        # parser.on("web", "Run web interactive UI") do
+        #   parser.banner = "Usage: #{Version::PROGRAM} web [arguments]"
+        #   action = WebUiAction
+        # end
 
         parser.separator
 
@@ -102,12 +117,12 @@ module Hodler
         verbose_enable: verbose_enable,
         config_file: config_file,
         action: action
-      }.as(Options)
+      }.as(GlobalOptions)
     end
 
     def self.parse_config(options)
-      puts "Loading configuration...".colorize(:yellow) if options[:verbose_enable]
       config_file = options[:config_file]
+      puts "Loading configuration... #{config_file}".colorize(:yellow) if options[:verbose_enable]
 
       if ! File.exists? config_file
         STDERR.puts "ERROR: Unable to read configuration file '#{config_file}'".colorize(:red)
@@ -126,13 +141,11 @@ module Hodler
     end
 
     def self.run(args)
-      app = Cli.new
-      options = Cli.parse_options(args)
-      config = Cli.parse_config(options)
+      app = CtlCli.new
+      options = CtlCli.parse_options(args)
+      config = CtlCli.parse_config(options)
       app.options = options
       app.config = config
-
-      portfolio = PortfolioFactory.build(options, config)
 
       action = ActionFactory.build(options, config)
       action.perform
@@ -142,3 +155,6 @@ module Hodler
     end
   end
 end
+
+Hodler::CtlCli.run(ARGV)
+
