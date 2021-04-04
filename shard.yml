@@ -9,8 +9,12 @@ description: |
   Crypto-currencies porfolio monitoring tool
 
 targets:
-  hodler:
-    main: src/main.cr
+  hodlerctl:
+    main: src/hodlerctl/main.cr
+  hodlertui:
+    main: src/hodlertui/main.cr
+  hodlerweb:
+    main: src/hodlerweb/main.cr
 
 dependencies:
   # Handle XDG environment variables
