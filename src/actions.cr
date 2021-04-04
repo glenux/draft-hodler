@@ -28,7 +28,7 @@ module Hodler
         wallets[to_id] ||= 0
         wallets[from_id] -= tr.from.amount
         wallets[fee_id] -= tr.fee.amount
-        wallets[to_id] += tr.from.amount
+        wallets[to_id] += tr.to.amount
 
         pp tr
         pp wallets
