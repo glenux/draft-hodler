@@ -5,10 +5,10 @@ require "colorize"
 require "xdg_basedir"
 require "completion"
 
-# require "./config"
 require "./version"
+require "./types"
+require "./models"
 require "./cli"
-
 
 Hodler::Cli.run(ARGV)
 
