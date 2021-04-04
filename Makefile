@@ -1,13 +1,15 @@
 
+BINARIES=hodler
+hodler_FILES=$(wildcard src/*.cr src/**/*.cr)
+
 all: build
 
-build: bin/hodler
+build: ## Build binaries
 
-bin/hodler: $(wildcard src/*.cr)
-	shards build hodler
+clean:  ## Clean binaries
 
-completion: bin/hodler
-	$< --completion --development
+.PHONY: clean build all
 
-clean:
-	rm bin/hodler
+## Add targets for crystal
+include tasks/crystal.mk
+
