@@ -4,6 +4,7 @@ require "yaml"
 require "colorize"
 require "xdg_basedir"
 require "completion"
+require "log"
 
 require "../lib/version"
 require "../lib/types"

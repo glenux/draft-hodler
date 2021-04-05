@@ -2,14 +2,10 @@
 require "../actions"
 
 module Hodler
-  class GetPortfolioAction < Action
-    def self.match(action)
-      # return (action == Action::Type::Report)
-    end
-
+  class GetWalletAction < Action
     def perform
       portfolio = PortfolioFactory.build(@global_options, @config)
-      puts portfolio.to_report
+      puts portfolio.wallet_report
     end
   end
 end
