@@ -6,11 +6,10 @@ require "xdg_basedir"
 require "completion"
 require "log"
 
-require "../lib/version"
-require "../lib/types"
-require "../lib/models"
 require "../lib/actions"
 require "../lib/models"
+require "../lib/types"
+require "../lib/version"
 
 module Hodler
   class CtlCli
@@ -31,7 +30,7 @@ module Hodler
 
       # parse
       OptionParser.parse(args) do |parser|
-        parser.banner = "Usage: #{Version::PROGRAM} [options] [commands] [arguments]"
+        parser.banner = "Usage: #{Version::PROGRAM_HODLERCTL} [options] [commands] [arguments]"
 
         parser.separator
         parser.separator "Options"
@@ -57,24 +56,23 @@ module Hodler
         parser.on "--completion", "Provide autocompletion for bash" do
           # nothing here
         end
-        complete_with Version::PROGRAM, parser
 
         parser.separator
         parser.separator "Commands"
 
         parser.on("get", "Get given object") do
-          parser.banner = "Usage: #{Version::PROGRAM} get [arguments]"
+          parser.banner = "Usage: #{Version::PROGRAM_HODLERCTL} get [arguments]"
 
           parser.separator
           parser.separator "Commands"
 
           parser.on("portfolio", "Show current portfolio") do
-            parser.banner = "Usage: #{Version::PROGRAM} portfolio [arguments]"
+            parser.banner = "Usage: #{Version::PROGRAM_HODLERCTL} portfolio [arguments]"
             action = GetPortfolioAction
           end
 
           parser.on("wallet", "Show given wallet") do
-            parser.banner = "Usage: #{Version::PROGRAM} portfolio [arguments]"
+            parser.banner = "Usage: #{Version::PROGRAM_HODLERCTL} portfolio [arguments]"
             action = GetWalletAction
           end
         end
@@ -112,6 +110,7 @@ module Hodler
           exit(1)
         end
 
+        complete_with Version::PROGRAM_HODLERCTL, parser
       end
 
       return {
